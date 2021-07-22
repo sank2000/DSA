@@ -11,20 +11,20 @@ class Array {
 
   Array(int size) {
     arr = new int[size];
+    SIZE = size;
   }
 
   Array() {
-    arr = new int[5];
+    arr = new int[SIZE];
   }
 
   public void insert(int value) {
     if (length >= SIZE) {
-      SIZE += 5;
+      SIZE *= 2;
       int[] newArr = new int[SIZE];
-      for (int i = 0; i < arr.length; i++) {
+      for (int i = 0; i < length; i++) {
         newArr[i] = arr[i];
       }
-      newArr[length] = value;
       arr = newArr;
     }
     arr[length] = value;
@@ -36,7 +36,7 @@ class Array {
   }
 
   public int indexOf(int item) {
-    for (int ind = 0; ind < arr.length; ind++) {
+    for (int ind = 0; ind < length; ind++) {
       if (item == arr[ind]) {
         return ind;
       }
@@ -50,6 +50,7 @@ class Array {
     for (int ind = index + 1; ind <= length; ind++) {
       arr[ind - 1] = arr[ind];
     }
+    length--;
     return true;
   }
   

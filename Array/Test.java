@@ -17,6 +17,8 @@ public class Test {
         System.out.println(arr.indexOf(10));
 
         System.out.println(arr.removeAt(3));
+
+        arr.insert(7);
         
         System.out.println(arr.getArrayString());
     }
