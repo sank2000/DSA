@@ -12,9 +12,10 @@ public class Test {
         arr.insert(4);
         arr.insert(5);
         arr.insert(6);
+
+        System.out.println(arr.indexOf(4));
+        System.out.println(arr.indexOf(10));
         
         System.out.println(arr.getArrayString());
-        
-
     }
 }

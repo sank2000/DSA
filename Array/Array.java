@@ -34,5 +34,14 @@ class Array {
   public String getArrayString() {
     return Arrays.toString(arr);
   }
+
+  public int indexOf(int item) {
+    for (int ind = 0; ind < arr.length; ind++) {
+      if (item == arr[ind]) {
+        return ind;
+      }
+    }
+    return -1;
+  }
   
 }
