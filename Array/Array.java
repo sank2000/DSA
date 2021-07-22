@@ -43,5 +43,14 @@ class Array {
     }
     return -1;
   }
+
+  public boolean removeAt(int index) {
+    if (index > length - 1)
+      return false;
+    for (int ind = index + 1; ind <= length; ind++) {
+      arr[ind - 1] = arr[ind];
+    }
+    return true;
+  }
   
 }
