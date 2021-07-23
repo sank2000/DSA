@@ -13,10 +13,16 @@ public class Main {
     ls.addLast(6);
     ls.addLast(7);
 
+    System.out.println(ls.indexOf(5));
+
     ls.printList();
+
+    System.out.println(ls.contains(4));
 
     ls.deleteFirst();
     ls.printList();
+
+    System.out.println(ls.contains(4));
 
     ls.deleteLast();
     ls.printList();
