@@ -32,6 +32,9 @@ public class Main {
     System.out.println(ls.getSize());
 
     System.out.println(Arrays.toString(ls.convertToArray()));
-    
+
+    ls.reverse();
+
+    System.out.println(Arrays.toString(ls.convertToArray()));
   }
 }

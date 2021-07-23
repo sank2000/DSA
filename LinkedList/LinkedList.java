@@ -94,17 +94,38 @@ public class LinkedList {
     return SIZE;
   }
   
-  public int[] convertToArray(){
+  public int[] convertToArray() {
     int[] arr = new int[SIZE];
     Node itr = head;
-    
+
     int index = 0;
-    while(itr != null){
+    while (itr != null) {
       arr[index++] = itr.getValue();
-      itr  = itr.getNext();
+      itr = itr.getNext();
     }
 
     return arr;
+  }
+
+  public void reverse() {
+    Node tailItr = tail;
+    
+    while (tailItr != head) {
+      Node itr = head;
+      
+      while (itr.getNext() != tailItr) {
+        itr = itr.getNext();
+      }
+
+      itr.getNext().setNext(itr);
+      tailItr = itr;
+    }
+
+    head.setNext(null);
+    var temp = head;
+    head = tail;
+    tail = temp;
+
   }
   
   private boolean isEmpty(){
