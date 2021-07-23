@@ -14,5 +14,11 @@ public class Main {
     ls.addLast(7);
 
     ls.printList();
+
+    ls.deleteFirst();
+    ls.printList();
+
+    ls.deleteLast();
+    ls.printList();
   }
 }
