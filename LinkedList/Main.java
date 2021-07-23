@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Arrays;
+
 public class Main {
   public static void main(String[] args) {
     LinkedList ls = new LinkedList();
@@ -26,5 +28,10 @@ public class Main {
 
     ls.deleteLast();
     ls.printList();
+
+    System.out.println(ls.getSize());
+
+    System.out.println(Arrays.toString(ls.convertToArray()));
+    
   }
 }

@@ -3,25 +3,28 @@ package LinkedList;
 public class LinkedList {
   private Node head;
   private Node tail;
+  private int SIZE = 0;
 
   public void addFirst(int value) {
     if (isEmpty()) {
-      Node newNode = new Node(value, null);
+      var newNode = new Node(value, null);
       head = tail = newNode;
-      return;
+    } else {
+      Node newNode = new Node(value, head);
+      head = newNode;
     }
-    Node newNode = new Node(value, head);
-    head = newNode;
+    SIZE++;
   }
 
   public void addLast(int value) {
     var newNode = new Node(value, null);
     if (isEmpty()) {
       head = tail = newNode;
-      return;
+    }else{
+      tail.setNext(newNode);
+      tail = newNode;
     }
-    tail.setNext(newNode);
-    tail = newNode;
+    SIZE++;
   }
 
   public void deleteFirst() {
@@ -34,6 +37,7 @@ public class LinkedList {
       head.setNext(null);
       head = second;
     }
+    SIZE--;
   }
 
   public void deleteLast() {
@@ -42,6 +46,7 @@ public class LinkedList {
 
     if (head == tail) {
       head = tail = null;
+      SIZE--;
       return;
     }
 
@@ -52,6 +57,7 @@ public class LinkedList {
 
     itr.setNext(null);
     tail = itr;
+    SIZE--;
   }
 
   public void printList() {
@@ -82,6 +88,23 @@ public class LinkedList {
       itr  = itr.getNext();
     } 
     return -1;
+  }
+
+  public int getSize()  {
+    return SIZE;
+  }
+  
+  public int[] convertToArray(){
+    int[] arr = new int[SIZE];
+    Node itr = head;
+    
+    int index = 0;
+    while(itr != null){
+      arr[index++] = itr.getValue();
+      itr  = itr.getNext();
+    }
+
+    return arr;
   }
   
   private boolean isEmpty(){
