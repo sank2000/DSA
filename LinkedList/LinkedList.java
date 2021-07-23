@@ -5,7 +5,7 @@ public class LinkedList {
   private Node tail;
 
   public void addFirst(int value) {
-    if (head == null) {
+    if (isEmpty()) {
       Node newNode = new Node(value, null);
       head = tail = newNode;
       return;
@@ -15,30 +15,35 @@ public class LinkedList {
   }
 
   public void addLast(int value) {
-    if (tail == null) {
-      Node newNode = new Node(value, null);
+    var newNode = new Node(value, null);
+    if (isEmpty()) {
       head = tail = newNode;
       return;
     }
-    Node newNode = new Node(value, null);
     tail.setNext(newNode);
     tail = newNode;
   }
 
   public void deleteFirst() {
-    if (head == null)
+    if (isEmpty())
       return;
     if (head.getNext() == null) {
-      head = null;
-      tail = null;
+      head = tail = null;
     } else {
-      head = head.getNext();
+      var second = head.getNext();
+      head.setNext(null);
+      head = second;
     }
   }
 
   public void deleteLast() {
-    if (head == null)
+    if (isEmpty())
       return;
+
+    if (head == tail) {
+      head = tail = null;
+      return;
+    }
 
     Node itr = head;
     while (itr.getNext() != tail) {
@@ -78,4 +83,9 @@ public class LinkedList {
     } 
     return -1;
   }
+  
+  private boolean isEmpty(){
+    return head == null;
+  }
+
 }
