@@ -108,23 +108,23 @@ public class LinkedList {
   }
 
   public void reverse() {
-    Node tailItr = tail;
-    
-    while (tailItr != head) {
-      Node itr = head;
-      
-      while (itr.getNext() != tailItr) {
-        itr = itr.getNext();
-      }
+    if (head == null)
+      return;
 
-      itr.getNext().setNext(itr);
-      tailItr = itr;
+    var previous = head;
+    var current = head.getNext();
+
+    while (current != null) {
+      var next = current.getNext();    
+      current.setNext(previous);
+      previous = current;
+      current = next;
     }
 
-    head.setNext(null);
-    var temp = head;
-    head = tail;
-    tail = temp;
+    var temp = tail;
+    tail = head;
+    head = temp;
+    tail.setNext(null);
 
   }
   
