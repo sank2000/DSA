@@ -127,6 +127,28 @@ public class LinkedList {
     tail.setNext(null);
 
   }
+
+  public Node getKthNodeFromEnd(int k) {
+    if (isEmpty()) {
+        throw new IllegalStateException();
+    }
+
+    Node start = head, end = head;
+    
+    for (int i = 0; i < k - 1; i++) {
+      if (end.getNext() == null) {
+        throw new IllegalArgumentException();
+      }
+      end = end.getNext();
+    }
+    
+    while (end.getNext() != null) {
+      start = start.getNext();
+      end = end.getNext();
+    }
+    
+    return start;
+  }
   
   private boolean isEmpty(){
     return head == null;

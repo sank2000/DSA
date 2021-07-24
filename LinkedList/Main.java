@@ -36,5 +36,7 @@ public class Main {
     ls.reverse();
 
     System.out.println(Arrays.toString(ls.convertToArray()));
+
+    System.out.println(ls.getKthNodeFromEnd(4).getValue());  
   }
 }
