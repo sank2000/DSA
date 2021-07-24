@@ -2,8 +2,9 @@ package Stack;
 
 public class Main {
   public static void main(String[] args) {
-    StringReverser sr = new StringReverser();
+    // StringReverser sr = new StringReverser();
+    BalancedExpression be = new BalancedExpression();
     
-    System.out.println(sr.reverse("testing"));
+    System.out.println(be.check("[(str)]{}"));
   }
 }
