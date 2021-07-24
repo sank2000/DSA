@@ -130,24 +130,41 @@ public class LinkedList {
 
   public Node getKthNodeFromEnd(int k) {
     if (isEmpty()) {
-        throw new IllegalStateException();
+      throw new IllegalStateException();
     }
 
     Node start = head, end = head;
-    
+
     for (int i = 0; i < k - 1; i++) {
       if (end.getNext() == null) {
         throw new IllegalArgumentException();
       }
       end = end.getNext();
     }
-    
+
     while (end.getNext() != null) {
       start = start.getNext();
       end = end.getNext();
     }
-    
+
     return start;
+  }
+  
+  public void printMiddle() {
+    if (isEmpty()) {
+      throw new IllegalStateException();
+    }
+
+    Node start = head, end = head;
+    while (end != tail && end.getNext() != tail) {
+      start = start.getNext();
+      end = end.getNext().getNext();
+    }
+    if(end == tail)
+      System.out.println(start.getValue());
+    else
+      System.out.println(start.getValue() + " , " + start.getNext().getValue());
+     
   }
   
   private boolean isEmpty(){

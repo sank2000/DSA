@@ -37,6 +37,8 @@ public class Main {
 
     System.out.println(Arrays.toString(ls.convertToArray()));
 
-    System.out.println(ls.getKthNodeFromEnd(4).getValue());  
+    System.out.println(ls.getKthNodeFromEnd(4).getValue());
+    
+    ls.printMiddle();
   }
 }
