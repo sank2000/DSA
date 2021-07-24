@@ -160,15 +160,49 @@ public class LinkedList {
       start = start.getNext();
       end = end.getNext().getNext();
     }
-    if(end == tail)
+    if (end == tail)
       System.out.println(start.getValue());
     else
       System.out.println(start.getValue() + " , " + start.getNext().getValue());
-     
+  }
+  
+  public void addLoopWithEnd(int node) {
+    if (node > SIZE) {
+      throw new IllegalStateException();
+    }
+
+    Node itr = head;
+    for (int i = 1; i < node; i++) {
+      itr = itr.getNext();
+    }
+
+    tail.setNext(itr);
+  }
+
+  public boolean hasLoop() {
+    if (isEmpty()) {
+      throw new IllegalStateException();
+    }
+
+    Node start = head, end = head;
+    while (start != tail && start != null) {
+      start = start.getNext();
+      end = end.getNext();
+      
+      if (end == null)
+        return false;
+      
+      end = end.getNext();
+      
+      if (start == end) {
+        return true;
+      }
+    }
+
+    return false;
   }
   
   private boolean isEmpty(){
     return head == null;
   }
-
 }

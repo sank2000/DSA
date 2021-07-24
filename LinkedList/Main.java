@@ -40,5 +40,9 @@ public class Main {
     System.out.println(ls.getKthNodeFromEnd(4).getValue());
     
     ls.printMiddle();
+
+    ls.addLoopWithEnd(2);
+
+    System.out.println(ls.hasLoop());
   }
 }
