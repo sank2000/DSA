@@ -1,17 +1,20 @@
 package Stack;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class BalancedExpression {
 
-  public boolean check(String str) {
+  private final List<Character> leftBrackets = Arrays.asList('(','[','{','<');
+  private final List<Character> rightBrackets = Arrays.asList(')', ']', '}', '>');
 
+  public boolean check(String str) {
     Stack<Character> stack = new Stack<Character>();
 
     for (char ch : str.toCharArray()) {
-      if (ch == '(' || ch == '<' || ch == '[' || ch == '{')
+      if (isLeftBracket(ch))
         stack.push(ch);
-      else if (ch == ')' || ch == '>' || ch == ']' || ch == '}') {
-
+      else if (isRightBracket(ch)) {
         if (stack.isEmpty() || !checkPair(stack.peek(), ch))
           return false;
 
@@ -20,11 +23,17 @@ public class BalancedExpression {
     }
 
     return stack.isEmpty();
+  }
+  
+  private boolean checkPair(Character open, Character close) {
+    return leftBrackets.indexOf(open) == rightBrackets.indexOf(close);
+  }
+  
+  private boolean isLeftBracket(Character ch) {
+    return leftBrackets.contains(ch);
+  }
 
+  private boolean isRightBracket(Character ch) {
+    return rightBrackets.contains(ch);
   }
-  
-  private boolean checkPair(Character open,Character close) {
-    return ((open == '(' && close == ')') || (open == '<' && close == '>') || (open == '{' && close == '}') || (open == '[' && close == ']'));
-  }
-  
 }
