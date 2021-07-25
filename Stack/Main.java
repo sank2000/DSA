@@ -4,6 +4,8 @@ public class Main {
   public static void main(String[] args) {
     // StringReverser sr = new StringReverser();
     // BalancedExpression be = new BalancedExpression();
+
+    //  ----------------------------------------
     
     // Stack stack = new Stack();
 
@@ -20,21 +22,34 @@ public class Main {
     // System.out.println(stack.peek());
     // System.out.println(stack.isEmpty());
 
-    DoubleStack stack = new DoubleStack();
+    //  ----------------------------------------
 
-    stack.push1(1);  
-    stack.push1(2);
+    // DoubleStack stack = new DoubleStack();
+
+    // stack.push1(1);  
+    // stack.push1(2);
     
-    stack.push2(3); 
-    stack.push2(4); 
-    stack.push2(5); 
+    // stack.push2(3); 
+    // stack.push2(4); 
+    // stack.push2(5); 
 
     // stack.pop2();
 
-    System.out.println(stack);
-    
+    // System.out.println(stack);
 
-    System.out.println(stack.isFull1());
-    System.out.println(stack.isFull2());
+    // System.out.println(stack.isFull1());
+    // System.out.println(stack.isFull2());
+
+    //  ----------------------------------------
+
+    MinStack minStack = new MinStack();
+    minStack.push(5);
+    minStack.push(2);
+    minStack.push(10);
+    minStack.push(1);
+
+    System.out.println(minStack.min());
+    System.out.println(minStack.pop());
+    System.out.println(minStack.min());
   }
 }
