@@ -3,8 +3,21 @@ package Stack;
 public class Main {
   public static void main(String[] args) {
     // StringReverser sr = new StringReverser();
-    BalancedExpression be = new BalancedExpression();
+    // BalancedExpression be = new BalancedExpression();
     
-    System.out.println(be.check("[(str)]{}"));
+    Stack stack = new Stack();
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+    stack.push(4);
+    stack.push(5);
+
+    System.out.println(stack);
+
+    stack.pop();
+
+    System.out.println(stack.peek());
+    System.out.println(stack.isEmpty());
   }
 }
