@@ -7,12 +7,12 @@ public class Stack {
   private int COUNT = 0;
   private int[] arr;
 
-  Stack(int size) {
+  public Stack(int size) {
     SIZE = size;
     arr = new int[size];
   }
 
-  Stack() {
+  public Stack() {
     arr = new int[SIZE];
   }
 
