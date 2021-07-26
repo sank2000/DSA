@@ -10,7 +10,7 @@ public class Main {
 
   public static void main(String[] args) {
 
-    ArrayQueue queue = new ArrayQueue();
+    StackQueue queue = new StackQueue();
     queue.enqueue(1);
     queue.enqueue(2);
     queue.enqueue(3);
