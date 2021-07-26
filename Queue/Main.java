@@ -17,12 +17,10 @@ public class Main {
     queue.enqueue(4);
     queue.enqueue(5);
 
-    System.out.println(queue);
-
-    queue.dequeue();
+    System.out.println(queue.dequeue());
 
     queue.enqueue(6);
 
-    System.out.println(queue);
+    System.out.println(queue.dequeue());
   }
 }
