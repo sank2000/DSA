@@ -7,6 +7,7 @@ public class ArrayQueue {
   int SIZE = 5;
   int front = 0;
   int rear = 0;
+  int COUNT = 0;
 
   ArrayQueue(int size) {
     SIZE = size;
@@ -20,7 +21,9 @@ public class ArrayQueue {
   public void enqueue(int value) {
     if (isFull())
       throw new IllegalStateException();
-    arr[rear++] = value;
+    arr[rear] = value;
+    rear = (rear + 1) % SIZE;
+    COUNT++;
   }
 
   public int dequeue() {
@@ -28,7 +31,9 @@ public class ArrayQueue {
       throw new IllegalStateException();
 
     var item = arr[front];
-    arr[front++] = 0;
+    arr[front] = 0;
+    front = (front + 1) % SIZE;
+    COUNT--;
 
     return item;
   }
@@ -40,16 +45,15 @@ public class ArrayQueue {
   }
 
   public boolean isEmpty() {
-    return front == rear;
+    return COUNT==0;
   }
 
   public boolean isFull() {
-    return rear == SIZE;
+    return COUNT == SIZE;
   }
 
   @Override
   public String toString() {
-    var content = Arrays.copyOfRange(arr, front, rear);
-    return Arrays.toString(content);
+    return Arrays.toString(arr);
   }
 }

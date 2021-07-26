@@ -21,6 +21,8 @@ public class Main {
 
     queue.dequeue();
 
+    queue.enqueue(6);
+
     System.out.println(queue);
   }
 }
