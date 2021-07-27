@@ -15,13 +15,11 @@ public class LinkListQueue {
   }
 
   public int peek() {
-    try {
-      var value = ll.peek();
-      return value;
-    }
-    catch(Exception e) {
+    var value = ll.peek();
+    if (value == null) {
       return -1;
     }
+    return value;
   }
 
   public int size() {

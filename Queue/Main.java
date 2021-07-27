@@ -53,22 +53,36 @@ public class Main {
 
     // ------------------------------------------------
 
-    LinkListQueue lq = new LinkListQueue();
+    // LinkListQueue lq = new LinkListQueue();
 
-    System.out.println(lq.isEmpty());
+    // System.out.println(lq.isEmpty());
 
-    lq.enqueue(1);
+    // lq.enqueue(1);
 
-    System.out.println(lq.isEmpty());
+    // System.out.println(lq.isEmpty());
 
-    lq.enqueue(2);
-    lq.enqueue(3);
-    lq.enqueue(4);
+    // lq.enqueue(2);
+    // lq.enqueue(3);
+    // lq.enqueue(4);
 
-    System.out.println(lq);
+    // System.out.println(lq);
 
-    System.out.println(lq.dequeue());
+    // System.out.println(lq.dequeue());
 
-    System.out.println(lq);
+    // System.out.println(lq);
+
+    StackUsingTwoQueue stack = new StackUsingTwoQueue();
+
+    System.out.println(stack.isEmpty());
+
+    stack.push(5);
+    stack.push(4);
+    stack.push(3);
+    stack.push(2);
+    System.out.println(stack.pop());
+    
+    stack.push(1);
+
+    System.out.println(stack.pop());
   }
 }
