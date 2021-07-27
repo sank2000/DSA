@@ -6,7 +6,7 @@ public class PriorityQueue {
   private int[] arr;
   private int SIZE = 5;
 
-  private int length = 0;
+  private int length;
 
   PriorityQueue(int size) {
     arr = new int[size];
@@ -22,29 +22,9 @@ public class PriorityQueue {
       throw new IllegalStateException();
     }
 
-    if (length == 0) {
-      arr[length++] = value;
-      return;
-    }
-
-    boolean flag = false;
-
-    for (int i = length - 1; i >= 0; i--) {
-      if (arr[i] > value) {
-        arr[i + 1] = arr[i];
-      } else {
-        arr[i + 1] = value;
-        flag = true;
-        break;
-      }
-    }
-
-    if (!flag) {
-      arr[0] = value;
-    }
-
+    var i = shiftItemsToInsert(value);
+    arr[i] = value;
     length++;
-
   }
   
   public int remove() {
@@ -65,6 +45,19 @@ public class PriorityQueue {
 
   public boolean isEmpty() {
     return length == 0;
+  }
+
+  private int shiftItemsToInsert(int item) {
+    int i;
+
+    for (i = length - 1; i >= 0; i--) {
+      if (arr[i] > item) {
+        arr[i + 1] = arr[i];
+      } else {
+        break;
+      }
+    }
+    return i + 1;
   }
   
   @Override
