@@ -13,26 +13,25 @@ public class StackUsingTwoQueue {
     top = item;
   }
 
-  public int pop() {
-    if (isEmpty())
-      throw new IllegalStateException();
+    public int pop() {
+      if (isEmpty())
+          throw new IllegalStateException();
 
-    return swapAndRemove();
-  }
+      while (queue1.size() > 1) {
+          top = queue1.remove();
+          queue2.add(top);
+      }
 
-  private int swapAndRemove() {
-     int secondTop = top;
-     while (queue1.peek() != top){
-       var temp = queue1.remove();
-       secondTop = temp;
-       queue2.add(temp);
-     }
-     var value = queue1.remove();
-     top = secondTop;
-      while (!queue2.isEmpty())
-        queue1.add(queue2.remove());
-      return value;
-  }
+      swapQueues();
+
+      return queue2.remove();
+    }
+
+    private void swapQueues() {
+        var temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
+    }
 
   public int peek() {
     if (isEmpty())
@@ -42,7 +41,7 @@ public class StackUsingTwoQueue {
   }
 
   public boolean isEmpty() {
-    return queue1.isEmpty() && queue2.isEmpty();
+    return queue1.isEmpty();
   }
 }
 
