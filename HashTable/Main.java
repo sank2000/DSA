@@ -11,7 +11,7 @@ public class Main {
     htl.put(2, "san");
     htl.put(2, "test");
     htl.print();
-    System.out.println(htl.get(10));
+    System.out.println(htl.get(2));
     htl.remove(1);
     htl.print();
   }

@@ -49,13 +49,11 @@ public class HashTableUsingLL {
   public String get(int k) {
     var hash = getHash(k);
 
-    if (hashtable[hash] == null) {
-      return null;
-    }
-
-    for (Entry entry : hashtable[hash]) {
-      if (entry.key == k)
-        return entry.value;
+    if (hashtable[hash] != null) {
+      for (Entry entry : hashtable[hash]) {
+        if (entry.key == k)
+          return entry.value;
+      }
     }
 
     return null;
@@ -64,20 +62,17 @@ public class HashTableUsingLL {
   public void remove(int k) {
     var hash = getHash(k);
 
-    if (hashtable[hash] == null) {
-      return;
+    if (hashtable[hash] != null) {
+      for (Entry entry : hashtable[hash]) {
+        if (entry.key == k)
+        {
+          hashtable[hash].remove(entry);
+          return;
+        }
+      }
     }
 
-    Entry e = null;
-
-    for (Entry entry : hashtable[hash]) {
-      if (entry.key == k)
-        e = entry;
-    }
-    if (e == null)
-      return;
-
-    hashtable[hash].remove(e);
+    throw new IllegalStateException();
   }
 
   private int getHash(int value) {
