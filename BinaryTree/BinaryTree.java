@@ -17,16 +17,28 @@ public class BinaryTree {
 
   public void insert(int val) {
     Node itr = root;
+    var node = new Node(val);
 
-    while (itr != null) {
-      if (itr.value > val) {
+    if (itr == null) {
+      root = node;
+      return;                                                          
+    }
+
+    while (true) {
+      if (itr.value < val) {
+        if (itr.rightChild == null) {
+          itr.rightChild = node;
+          break;
+        }
         itr = itr.rightChild;
       } else {
+        if (itr.leftChild == null) {
+          itr.leftChild = node;
+          break;
+        }
         itr = itr.leftChild;
       }
     }
-
-    root = new Node(val);
   }
 
 
@@ -44,6 +56,50 @@ public class BinaryTree {
     }
 
     return false;
+  }
+
+  public void traversePreOrder() {
+    traversePreOrder(root);
+  }
+
+  public void traverseInOrder() {
+    traverseInOrder(root);
+  }
+
+  public void traversePostOrder() {
+    traversePostOrder(root);
+  }
+
+  private void traversePreOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+
+    System.out.println(root.value);
+    traversePreOrder(root.leftChild);
+    traversePreOrder(root.rightChild);
+  }
+  
+
+  private void traverseInOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+
+    traversePreOrder(root.leftChild);
+    System.out.println(root.value);
+    traversePreOrder(root.rightChild);
+  }
+  
+
+  private void traversePostOrder(Node root) {
+    if (root == null) {
+      return;
+    }
+    
+    traversePreOrder(root.leftChild);
+    traversePreOrder(root.rightChild);
+    System.out.println(root.value);
   }
 
 }
