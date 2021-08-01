@@ -18,5 +18,7 @@ public class Main {
     System.out.println("------------");
 
     bt.traversePostOrder();
+    bt.traverseInOrder();
+    bt.traversePreOrder();
   }
 }

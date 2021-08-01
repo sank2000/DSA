@@ -60,14 +60,17 @@ public class BinaryTree {
 
   public void traversePreOrder() {
     traversePreOrder(root);
+    System.out.println();
   }
 
   public void traverseInOrder() {
     traverseInOrder(root);
+    System.out.println();
   }
 
   public void traversePostOrder() {
     traversePostOrder(root);
+    System.out.println();
   }
 
   private void traversePreOrder(Node root) {
@@ -75,7 +78,7 @@ public class BinaryTree {
       return;
     }
 
-    System.out.println(root.value);
+    System.out.print(root.value);
     traversePreOrder(root.leftChild);
     traversePreOrder(root.rightChild);
   }
@@ -86,9 +89,9 @@ public class BinaryTree {
       return;
     }
 
-    traversePreOrder(root.leftChild);
-    System.out.println(root.value);
-    traversePreOrder(root.rightChild);
+    traverseInOrder(root.leftChild);
+    System.out.print(root.value);
+    traverseInOrder(root.rightChild);
   }
   
 
@@ -97,9 +100,9 @@ public class BinaryTree {
       return;
     }
     
-    traversePreOrder(root.leftChild);
-    traversePreOrder(root.rightChild);
-    System.out.println(root.value);
+    traversePostOrder(root.leftChild);
+    traversePostOrder(root.rightChild);
+    System.out.print(root.value);
   }
 
 }
