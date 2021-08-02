@@ -112,14 +112,37 @@ public class BinaryTree {
   private int height(Node root) {
     if (root == null)
       return -1;
-      
-    if (root.leftChild == null && root.rightChild == null) {
+
+    if (isLeafNode(root)) {
       return 0;
     }
 
     return 1 + Math.max(height(root.leftChild), height(root.rightChild));
-    
   }
+
+  public int min() {
+    if (root == null)
+      return -1;
+    return min(root);
+  }
+
+  private int min(Node root) {
+    if (root == null)
+      return Integer.MAX_VALUE;
+
+    if (isLeafNode(root)) {
+      return root.value;
+    }
+
+    var left = min(root.leftChild);
+    var right = min(root.rightChild);
+
+    return Math.min(Math.min(left, right),root.value);
+  }
+
+  private boolean isLeafNode(Node root) {
+    return root.leftChild == null && root.rightChild == null;
+  };
 
 
 }
