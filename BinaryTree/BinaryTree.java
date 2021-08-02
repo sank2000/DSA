@@ -106,12 +106,13 @@ public class BinaryTree {
   }
 
   public int height() {
-    if (root == null)
-      return -1;
     return height(root);
   }
 
   private int height(Node root) {
+    if (root == null)
+      return -1;
+      
     if (root.leftChild == null && root.rightChild == null) {
       return 0;
     }
