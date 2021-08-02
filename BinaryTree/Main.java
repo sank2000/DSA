@@ -20,5 +20,7 @@ public class Main {
     bt.traversePostOrder();
     bt.traverseInOrder();
     bt.traversePreOrder();
+
+    System.out.println(bt.height());
   }
 }

@@ -99,10 +99,26 @@ public class BinaryTree {
     if (root == null) {
       return;
     }
-    
+
     traversePostOrder(root.leftChild);
     traversePostOrder(root.rightChild);
     System.out.print(root.value);
   }
+
+  public int height() {
+    if (root == null)
+      return -1;
+    return height(root);
+  }
+
+  private int height(Node root) {
+    if (root.leftChild == null && root.rightChild == null) {
+      return 0;
+    }
+
+    return 1 + Math.max(height(root.leftChild), height(root.rightChild));
+    
+  }
+
 
 }
