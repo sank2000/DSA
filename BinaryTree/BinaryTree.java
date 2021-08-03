@@ -83,7 +83,6 @@ public class BinaryTree {
     traversePreOrder(root.rightChild);
   }
   
-
   private void traverseInOrder(Node root) {
     if (root == null) {
       return;
@@ -94,7 +93,6 @@ public class BinaryTree {
     traverseInOrder(root.rightChild);
   }
   
-
   private void traversePostOrder(Node root) {
     if (root == null) {
       return;
@@ -126,6 +124,28 @@ public class BinaryTree {
     return min(root);
   }
 
+  public boolean equals(BinaryTree tree2) {
+    if (tree2 == null) {
+      throw new IllegalStateException();
+    }
+    return equals(root,tree2.root);
+  }
+
+  public boolean equals(Node root, Node root2) {
+    if (root == null && root2 == null)
+      return true;
+
+    if (root == null || root2 ==  null) {
+      return false;
+    }
+
+    if (root.value != root2.value)
+      return false;
+    var left = equals(root.leftChild,root2.leftChild);
+    var right = equals(root.rightChild, root2.rightChild);
+    return left && right;
+  }
+
   private int min(Node root) {
     if (root == null)
       return Integer.MAX_VALUE;
@@ -143,6 +163,5 @@ public class BinaryTree {
   private boolean isLeafNode(Node root) {
     return root.leftChild == null && root.rightChild == null;
   };
-
 
 }

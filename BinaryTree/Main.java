@@ -24,5 +24,22 @@ public class Main {
 
     System.out.println(bt.height());
     System.out.println(bt.min());
+
+    BinaryTree bt2 = new BinaryTree();
+
+    System.out.println(bt.find(10));
+
+    bt2.insert(7);
+    bt2.insert(4);
+    bt2.insert(9);
+    bt2.insert(1);
+    bt2.insert(6);
+    bt2.insert(8);
+    bt2.insert(10);
+    bt2.insert(11);
+
+    System.out.print("Comparison: ");
+
+    System.out.println(bt.equals(bt2));
   }
 }
