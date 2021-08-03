@@ -48,6 +48,11 @@ public class Main {
 
     // System.out.print("Is BST: ");
     // System.out.println(bt.isBST());
-    bt.findKthNode(3);
+    for (Integer integer : bt.findKthNode(1)) {
+      System.out.print(integer + " ");
+    }
+    System.out.println();
+    System.out.println("---------");
+    bt.levelOrderTraverse();
   }
 }

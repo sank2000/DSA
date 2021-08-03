@@ -1,5 +1,7 @@
 package BinaryTree;
 
+import java.util.ArrayList;
+
 public class BinaryTree {
   
   private class Node {
@@ -141,21 +143,33 @@ public class BinaryTree {
     return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
   }
   
-  public void findKthNode(int k) {
-    findKthNode(root,k);
+  public ArrayList<Integer> findKthNode(int k) {
+    var list = new ArrayList<Integer>();
+    findKthNode(root, k, list);
+    return list;
+  }
+
+  public void levelOrderTraverse() {
+    for (int i = 0; i <= height(); i++) {
+      var list = findKthNode(i);
+      for (Integer integer : list) {
+        System.out.print(integer + " ");
+      }
+      System.out.println();
+    }
   }
   
-  private void findKthNode(Node root,int k) {
+  private void findKthNode(Node root,int k,ArrayList<Integer> list) {
     if (root == null)
       return;
 
     if (k == 0) {
-      System.out.println(root.value);
+      list.add(root.value);
       return;
     }
 
-    findKthNode(root.leftChild,k - 1);
-    findKthNode(root.rightChild,k -1);
+    findKthNode(root.leftChild,k - 1,list);
+    findKthNode(root.rightChild,k -1,list);
   }
   
   private boolean isBST(Node root, int min,int max) {
