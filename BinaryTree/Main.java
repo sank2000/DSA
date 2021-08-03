@@ -44,9 +44,10 @@ public class Main {
     System.out.print("Is BST: ");
     System.out.println(bt.isBST());
 
-    bt.swapRootValue();
+    // bt.swapRootValue();
 
-    System.out.print("Is BST: ");
-    System.out.println(bt.isBST());
+    // System.out.print("Is BST: ");
+    // System.out.println(bt.isBST());
+    bt.findKthNode(3);
   }
 }

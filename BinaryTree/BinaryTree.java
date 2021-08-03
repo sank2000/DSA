@@ -138,7 +138,24 @@ public class BinaryTree {
   }
 
   public boolean isBST() {
-    return isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
+  
+  public void findKthNode(int k) {
+    findKthNode(root,k);
+  }
+  
+  private void findKthNode(Node root,int k) {
+    if (root == null)
+      return;
+
+    if (k == 0) {
+      System.out.println(root.value);
+      return;
+    }
+
+    findKthNode(root.leftChild,k - 1);
+    findKthNode(root.rightChild,k -1);
   }
   
   private boolean isBST(Node root, int min,int max) {
