@@ -107,6 +107,12 @@ public class BinaryTree {
     return height(root);
   }
 
+  public void swapRootValue() {
+    var temp = root.leftChild;
+    root.leftChild = root.rightChild;
+    root.rightChild = temp;
+  }
+
   private int height(Node root) {
     if (root == null)
       return -1;
@@ -128,10 +134,27 @@ public class BinaryTree {
     if (tree2 == null) {
       throw new IllegalStateException();
     }
-    return equals(root,tree2.root);
+    return equals(root, tree2.root);
   }
 
-  public boolean equals(Node root, Node root2) {
+  public boolean isBST() {
+    return isBST(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+  }
+  
+  private boolean isBST(Node root, int min,int max) {
+    if (root == null)
+      return true;
+
+    if (root.value < min || root.value > max) {
+      return false;
+    }
+
+    var left = isBST(root.leftChild,min,root.value - 1);
+    var right = isBST(root.rightChild,root.value + 1,max);
+    return left && right;
+  }
+
+  private boolean equals(Node root, Node root2) {
     if (root == null && root2 == null)
       return true;
 

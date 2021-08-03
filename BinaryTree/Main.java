@@ -13,7 +13,6 @@ public class Main {
     bt.insert(6);
     bt.insert(8);
     bt.insert(10);
-    bt.insert(11);
 
     System.out.println(bt.find(15));
     System.out.println("------------");
@@ -41,5 +40,13 @@ public class Main {
     System.out.print("Comparison: ");
 
     System.out.println(bt.equals(bt2));
+
+    System.out.print("Is BST: ");
+    System.out.println(bt.isBST());
+
+    bt.swapRootValue();
+
+    System.out.print("Is BST: ");
+    System.out.println(bt.isBST());
   }
 }
