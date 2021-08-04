@@ -57,5 +57,6 @@ public class Main {
     System.out.println(bt.size());
     System.out.println(bt.countLeaves());
     System.out.println(bt.contains(6));
+    System.out.println(bt.areSibling(1,6));
   }
 }

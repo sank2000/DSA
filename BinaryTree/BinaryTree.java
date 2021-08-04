@@ -168,7 +168,22 @@ public class BinaryTree {
   }
 
   public boolean contains(int value) {
-    return contains(root,value);
+    return contains(root, value);
+  }
+  
+  public boolean areSibling(int num1, int num2) {
+    return areSibling(root, num1, num2);
+  }
+  
+  private boolean areSibling(Node root, int num1, int num2) {
+    if(root == null || isLeafNode(root))
+      return false;
+
+    if ((root.leftChild.value == num1 && root.rightChild.value == num2)
+        || (root.rightChild.value == num1 && root.leftChild.value == num2))
+      return true;
+
+    return areSibling(root.leftChild,num1, num2) || areSibling(root.rightChild,num1, num2);
   }
 
   private boolean contains(Node root,int value) {
