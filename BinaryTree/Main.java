@@ -54,5 +54,8 @@ public class Main {
     System.out.println();
     System.out.println("---------");
     bt.levelOrderTraverse();
+    System.out.println(bt.size());
+    System.out.println(bt.countLeaves());
+    System.out.println(bt.contains(6));
   }
 }

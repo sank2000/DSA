@@ -158,6 +158,48 @@ public class BinaryTree {
       System.out.println();
     }
   }
+
+  public Integer size() {
+    return size(root);
+  }
+
+  public Integer countLeaves() {
+    return countLeaves(root);
+  }
+
+  public boolean contains(int value) {
+    return contains(root,value);
+  }
+
+  private boolean contains(Node root,int value) {
+    if(root == null)
+      return false;
+    
+    if(root.value == value)
+      return true;
+    
+    return contains(root.leftChild, value) || contains(root.rightChild, value);
+  }
+
+  private Integer countLeaves(Node root) {
+    if (root == null)
+      return 0;
+
+    if (isLeafNode(root))
+      return 1;
+    
+    return countLeaves(root.leftChild) + countLeaves(root.leftChild);
+  }
+
+  private Integer size(Node root) {
+    if (root == null)
+      return 0;
+
+    if (isLeafNode(root))
+      return 1;
+    
+    return 1 + size(root.leftChild) + size(root.leftChild);
+  }
   
   private void findKthNode(Node root,int k,ArrayList<Integer> list) {
     if (root == null)
