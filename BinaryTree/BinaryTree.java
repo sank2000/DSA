@@ -174,6 +174,28 @@ public class BinaryTree {
   public boolean areSibling(int num1, int num2) {
     return areSibling(root, num1, num2);
   }
+
+  public ArrayList<Integer> getAncestors(int num) {
+    ArrayList<Integer> list = new ArrayList<Integer>();
+    getAncestors(root, list, num);
+    return list;
+  }
+  
+  private boolean getAncestors(Node root,ArrayList<Integer> list,int num) {
+    if (root == null)
+      return false;
+
+    if (root.value == num)
+      return true;
+
+    if (getAncestors(root.leftChild,list,num) ||
+        getAncestors(root.rightChild,list,num)) {
+      list.add(root.value);
+      return true;
+    }
+
+    return false;
+  }
   
   private boolean areSibling(Node root, int num1, int num2) {
     if(root == null || isLeafNode(root))
