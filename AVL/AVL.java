@@ -34,7 +34,26 @@ public class AVL {
     } else {
       root.leftChild = insert(root.leftChild, val);
     }
-    root.height = 1 + Math.max(height(root.leftChild), height(root.rightChild));
+
+    setHeight(root);
+
+    root = balance(root);
+
+    return root;
+  }
+
+  private Node balance(Node root) {
+    if (isLeftHeavy(root)) {
+      if (balanceFactor(root.leftChild) < 0) {
+        root.leftChild = leftRotation(root.leftChild);
+      }
+      root = rightRotation(root);
+    } else if (isRightHeavy(root)) {
+      if (balanceFactor(root.rightChild) > 0) {
+        root.rightChild = rightRotation(root.rightChild);
+      }
+      root = leftRotation(root);
+    }
     return root;
   }
 
@@ -47,6 +66,30 @@ public class AVL {
     System.out.println();
   }
 
+  private Node leftRotation(Node root) {
+    var newNode = root.rightChild;
+
+    root.rightChild = newNode.leftChild;
+    setHeight(root);
+
+    newNode.leftChild = root;
+    setHeight(newNode);
+
+    return newNode;
+  }
+
+  private Node rightRotation(Node root) {
+    var newNode = root.leftChild;
+
+    root.leftChild = newNode.rightChild;
+    setHeight(root);
+
+    newNode.rightChild = root;
+    setHeight(newNode);
+
+    return newNode;
+  }
+
   private void traverseInOrder(Node root) {
     if (root == null) {
       return;
@@ -55,5 +98,21 @@ public class AVL {
     traverseInOrder(root.leftChild);
     System.out.print(root.value);
     traverseInOrder(root.rightChild);
+  }
+
+  private void setHeight(Node node) {
+    node.height = 1 + Math.max(height(node.leftChild), height(node.rightChild));
+  }
+
+  private int balanceFactor(Node root) {
+    return (root == null) ? 0 : height(root.leftChild) - height(root.rightChild);
+  }
+
+  private boolean isLeftHeavy(Node root) {
+    return balanceFactor(root) > 1;
+  }
+
+  private boolean isRightHeavy(Node root) {
+    return balanceFactor(root) < -1;
   }
 }
