@@ -6,6 +6,7 @@ public class AVL {
     private Node leftChild;
     private Node rightChild;
     private int value;
+    private int height;
 
     Node(int val) {
       value = val;
@@ -33,7 +34,12 @@ public class AVL {
     } else {
       root.leftChild = insert(root.leftChild, val);
     }
+    root.height = 1 + Math.max(height(root.leftChild), height(root.rightChild));
     return root;
+  }
+
+  private int height(Node root) {
+    return root == null ? -1 : root.height;
   }
 
   public void traverseInOrder() {
@@ -50,5 +56,4 @@ public class AVL {
     System.out.print(root.value);
     traverseInOrder(root.rightChild);
   }
-
 }
