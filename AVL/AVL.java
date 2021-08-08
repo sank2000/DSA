@@ -10,6 +10,11 @@ public class AVL {
     Node(int val) {
       value = val;
     }
+
+    @Override
+    public String toString() {
+      return "value :" + value;
+    }
   }
 
   private Node root;
