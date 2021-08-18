@@ -122,4 +122,11 @@ public class Heap {
     return Arrays.toString(content);
   }
 
+  public int getMax() {
+    if (count == 0)
+      throw new IllegalStateException();
+
+    return arr[0];
+  }
+
 }

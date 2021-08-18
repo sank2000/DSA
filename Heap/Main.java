@@ -1,6 +1,6 @@
 package Heap;
 
-import java.util.Arrays;
+// import java.util.Arrays;
 
 public class Main {
 
@@ -20,10 +20,10 @@ public class Main {
 
     System.out.println(hp);
 
-    int arr[] = { 5, 3, 8, 4, 1, 2 };
-    Heapify.heapify(arr);
+    int arr[] = { 5, 3, 8, 4, 2 };
+    // Heapify.heapify(arr);
 
-    System.out.println(Arrays.toString(arr));
+    System.out.println(FindKthLargestValue.find(arr, 3));
 
   }
 
