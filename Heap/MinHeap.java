@@ -43,7 +43,7 @@ public class MinHeap {
 
   }
 
-  public Node remove() {
+  public String remove() {
     if (isEmpty())
       throw new IllegalStateException();
 
@@ -52,7 +52,7 @@ public class MinHeap {
 
     bubbleDown();
 
-    return temp;
+    return temp.toString();
   }
 
   private void bubbleDown() {
@@ -120,11 +120,11 @@ public class MinHeap {
     return isValid;
   }
 
-  private boolean isFull() {
+  public boolean isFull() {
     return SIZE == arr.length;
   }
 
-  private boolean isEmpty() {
+  public boolean isEmpty() {
     return SIZE == 0;
   }
 
