@@ -2,7 +2,8 @@ package Heap;
 
 public class Heapify {
   public static void heapify(int[] arr) {
-    for (int i = 0; i < arr.length; i++) {
+    int lastParentIndex = arr.length / 2 - 1;
+    for (int i = lastParentIndex; i >= 0; i--) {
       heapify(arr, i);
     }
   }
