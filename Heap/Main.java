@@ -6,27 +6,15 @@ public class Main {
 
   public static void main(String[] args) {
 
-    Heap hp = new Heap();
+    MinHeap hp = new MinHeap();
 
-    hp.insert(10);
-    hp.insert(5);
-    hp.insert(17);
-    hp.insert(4);
-    hp.insert(22);
+    hp.insert(10, "one");
+    hp.insert(5, "two");
+    hp.insert(17, "three");
+    hp.insert(4, "four");
+    hp.insert(22, "five");
 
-    System.out.println(hp);
-
-    hp.remove();
-
-    System.out.println(hp.isMaxHeap());
-
-    System.out.println(hp);
-
-    int arr[] = { 5, 3, 8, 4, 2 };
-    // Heapify.heapify(arr);
-
-    System.out.println(FindKthLargestValue.find(arr, 3));
-
+    System.out.println(hp.remove());
   }
 
 }
