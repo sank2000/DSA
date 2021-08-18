@@ -18,6 +18,8 @@ public class Main {
 
     hp.remove();
 
+    System.out.println(hp.isMaxHeap());
+
     System.out.println(hp);
 
     int arr[] = { 5, 3, 8, 4, 2 };

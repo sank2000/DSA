@@ -129,4 +129,17 @@ public class Heap {
     return arr[0];
   }
 
+  public boolean isMaxHeap() {
+    boolean maxHeap = true;
+
+    for (int i = 0; i < arr.length; i++) {
+      if ((hasLeftChild(i) && leftChild(i) > arr[i]) || (hasRightChild(i) && rightChild(i) > arr[i])) {
+        maxHeap = false;
+        break;
+      }
+    }
+
+    return maxHeap;
+  }
+
 }
