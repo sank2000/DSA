@@ -13,6 +13,18 @@ public class Tries {
       this.value = ch;
     }
 
+    public boolean hasChildren(Character ch) {
+      return this.children.containsKey(ch);
+    }
+
+    public void addChild(Character ch) {
+      this.children.put(ch, new Node(ch));
+    }
+
+    public Node getChild(Character ch) {
+      return this.children.get(ch);
+    }
+
     @Override
     public String toString() {
       return this.value + " ";
@@ -25,10 +37,9 @@ public class Tries {
     Node itr = root;
 
     for (Character ch : str.toCharArray()) {
-      if (itr.children.get(ch) == null)
-        itr.children.put(ch, new Node(ch));
-
-      itr = itr.children.get(ch);
+      if (!itr.hasChildren(ch))
+        itr.addChild(ch);
+      itr = itr.getChild(ch);
     }
 
     itr.isEndOfWorld = true;
