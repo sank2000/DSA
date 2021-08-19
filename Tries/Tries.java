@@ -45,4 +45,23 @@ public class Tries {
     itr.isEndOfWorld = true;
   }
 
+  public boolean contains(String str) {
+    if (str == null)
+      throw new IllegalStateException();
+
+    Node itr = root;
+    for (int i = 0; i < str.length(); i++) {
+      Character ch = str.charAt(i);
+      if (itr.hasChildren(ch)) {
+        if (itr.getChild(ch).isEndOfWorld && i == str.length() - 1)
+          return true;
+        itr = itr.getChild(ch);
+      } else {
+        return false;
+      }
+    }
+
+    return false;
+  }
+
 }
