@@ -1,19 +1,16 @@
 package Tries;
 
+import java.util.HashMap;
+
 public class Tries {
 
   private class Node {
-    Character value;
-    Node[] children = new Node[26];
-    boolean isEndOfWorld;
+    private Character value;
+    private HashMap<Character, Node> children = new HashMap<Character, Node>();
+    private boolean isEndOfWorld;
 
     Node(Character ch) {
       this.value = ch;
-    }
-
-    Node(Character ch, boolean flag) {
-      this.value = ch;
-      this.isEndOfWorld = flag;
     }
 
     @Override
@@ -26,24 +23,15 @@ public class Tries {
 
   public void insert(String str) {
     Node itr = root;
-    for (int i = 0; i < str.length(); i++) {
-      int ind = index(str.charAt(i));
 
-      if (itr.children[ind] == null) {
-        if (i == str.length() - 1) {
-          itr.children[ind] = new Node(str.charAt(i), i == str.length() - 1);
-          return;
-        } else {
-          itr.children[ind] = new Node(str.charAt(i));
-        }
-      }
+    for (Character ch : str.toCharArray()) {
+      if (itr.children.get(ch) == null)
+        itr.children.put(ch, new Node(ch));
 
-      itr = itr.children[ind];
+      itr = itr.children.get(ch);
     }
-  }
 
-  private int index(Character ch) {
-    return ch - 'a';
+    itr.isEndOfWorld = true;
   }
 
 }
