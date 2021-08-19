@@ -13,7 +13,9 @@ public class Main {
     tr.insert("book");
     tr.insert("border");
 
-    System.out.println(tr.contains("borders"));
+    System.out.println(tr.contains("border"));
+
+    tr.traverse();
 
   }
 }

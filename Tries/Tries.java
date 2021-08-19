@@ -25,6 +25,10 @@ public class Tries {
       return this.children.get(ch);
     }
 
+    public Node[] getChildren() {
+      return this.children.values().toArray(new Node[0]);
+    }
+
     @Override
     public String toString() {
       return this.value + " ";
@@ -62,6 +66,20 @@ public class Tries {
     }
 
     return false;
+  }
+
+  public void traverse() {
+    traverse(root);
+  }
+
+  private void traverse(Node root) {
+    if (root == null)
+      return;
+    System.out.println(root.value);
+
+    for (Node itr : root.getChildren()) {
+      traverse(itr);
+    }
   }
 
 }
