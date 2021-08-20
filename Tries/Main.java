@@ -9,9 +9,11 @@ public class Main {
 
     Tries tr = new Tries();
 
-    tr.insert("boy");
-    tr.insert("book");
-    tr.insert("border");
+    tr.insert("car");
+    tr.insert("card");
+    tr.insert("care");
+    tr.insert("careful");
+    tr.insert("egg");
 
     System.out.println(tr.contains("boy"));
 
@@ -20,5 +22,6 @@ public class Main {
     tr.remove("boy");
     System.out.println(tr.contains("boy"));
 
+    System.out.println(tr.getSuggestion("car"));
   }
 }

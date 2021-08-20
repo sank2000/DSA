@@ -1,5 +1,6 @@
 package Tries;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Tries {
@@ -101,6 +102,38 @@ public class Tries {
     if (!children.hasChildren() && !children.isEndOfWorld) {
       root.removeChildren(ch);
     }
+  }
+
+  public ArrayList<String> getSuggestion(String str) {
+    ArrayList<String> ls = new ArrayList<>();
+
+    Node itr = root;
+
+    for (Character ch : str.toCharArray()) {
+      if (itr.hasChildren(ch)) {
+        itr = itr.getChild(ch);
+      } else {
+        return ls;
+      }
+    }
+
+    getSuggestion(itr, str, ls);
+
+    return ls;
+  }
+
+  private void getSuggestion(Node root, String str, ArrayList<String> ls) {
+    if (root == null)
+      return;
+
+    if (root.isEndOfWorld) {
+      ls.add(str);
+    }
+
+    for (Node itr : root.getChildren()) {
+      getSuggestion(itr, str + itr.value, ls);
+    }
+
   }
 
   public void traverse() {
