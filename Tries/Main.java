@@ -13,9 +13,12 @@ public class Main {
     tr.insert("book");
     tr.insert("border");
 
-    System.out.println(tr.contains("border"));
+    System.out.println(tr.contains("boy"));
 
-    tr.traverse();
+    // tr.traverse();
+
+    tr.remove("boy");
+    System.out.println(tr.contains("boy"));
 
   }
 }

@@ -29,6 +29,14 @@ public class Tries {
       return this.children.values().toArray(new Node[0]);
     }
 
+    public boolean hasChildren() {
+      return !this.children.isEmpty();
+    }
+
+    public void removeChildren(Character ch) {
+      this.children.remove(ch);
+    }
+
     @Override
     public String toString() {
       return this.value + " ";
@@ -66,6 +74,33 @@ public class Tries {
     }
 
     return false;
+  }
+
+  public void remove(String str) {
+    if (str == null) {
+      return;
+    }
+    remove(root, str, 0);
+  }
+
+  private void remove(Node root, String str, int index) {
+    if (index == str.length()) {
+      root.isEndOfWorld = false;
+      return;
+    }
+
+    Character ch = str.charAt(index);
+    Node children = root.getChild(ch);
+
+    if (children == null) {
+      return;
+    }
+
+    remove(children, str, index + 1);
+
+    if (!children.hasChildren() && !children.isEndOfWorld) {
+      root.removeChildren(ch);
+    }
   }
 
   public void traverse() {
