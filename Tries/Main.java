@@ -15,6 +15,8 @@ public class Main {
     tr.insert("careful");
     tr.insert("egg");
 
+    System.out.println(tr.countWords());
+
     System.out.println(tr.contains("car"));
     System.out.println(tr.containsRecursive("card"));
 

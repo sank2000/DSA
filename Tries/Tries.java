@@ -84,6 +84,27 @@ public class Tries {
     return containsRecursive(root, str, 0);
   }
 
+  public int countWords() {
+    return countWords(root);
+  }
+
+  private int countWords(Node root) {
+    if (root == null)
+      return 0;
+
+    int count = 0;
+
+    if (root.isEndOfWorld) {
+      count++;
+    }
+
+    for (Node itr : root.getChildren()) {
+      count += countWords(itr);
+    }
+
+    return count;
+  }
+
   private boolean containsRecursive(Node root, String str, int index) {
     Character ch = str.charAt(index);
     if (root == null || root.getChild(ch) == null)
