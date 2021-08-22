@@ -26,5 +26,9 @@ public class Main {
     System.out.println(tr.contains("boy"));
 
     System.out.println(tr.getSuggestion("car"));
+
+    String[] arr = { "can", "canada" };
+
+    System.out.println(tr.longestPrefix(arr));
   }
 }

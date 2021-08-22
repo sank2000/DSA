@@ -189,4 +189,39 @@ public class Tries {
     }
   }
 
+  public String longestPrefix(String[] arr) {
+    if (arr == null || arr.length == 0)
+      return "";
+
+    Tries tr = new Tries();
+    int shortest = shortestString(arr).length();
+    String prefix = "";
+
+    for (String string : arr) {
+      tr.insert(string);
+    }
+    Node itr = tr.root;
+
+    while (prefix.length() < shortest) {
+      Node[] children = itr.getChildren();
+      if (children.length != 1) {
+        break;
+      }
+      itr = children[0];
+      prefix += itr.value;
+    }
+
+    return prefix;
+  }
+
+  private String shortestString(String[] arr) {
+    String shortStr = arr[0];
+    for (int i = 1; i < arr.length; i++) {
+      if (shortStr.length() > arr[i].length()) {
+        shortStr = arr[i];
+      }
+    }
+    return shortStr;
+  }
+
 }
