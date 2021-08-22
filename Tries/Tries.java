@@ -77,6 +77,24 @@ public class Tries {
     return false;
   }
 
+  public boolean containsRecursive(String str) {
+    if (str == null)
+      throw new IllegalStateException();
+
+    return containsRecursive(root, str, 0);
+  }
+
+  private boolean containsRecursive(Node root, String str, int index) {
+    Character ch = str.charAt(index);
+    if (root == null || root.getChild(ch) == null)
+      return false;
+
+    if (root.getChild(ch).isEndOfWorld && str.length() - 1 == index)
+      return true;
+
+    return containsRecursive(root.getChild(ch), str, index + 1);
+  }
+
   public void remove(String str) {
     if (str == null) {
       return;
