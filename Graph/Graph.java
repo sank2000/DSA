@@ -15,6 +15,8 @@ public class Graph {
     }
 
     public void addRelation(Node nd) {
+      if (ls.contains(nd))
+        return;
       ls.add(nd);
     }
 
@@ -28,7 +30,7 @@ public class Graph {
       for (Node nd : ls) {
         temp[i++] = nd.label;
       }
-      return Arrays.toString(temp);
+      return i == 0 ? "None" : Arrays.toString(temp);
     }
 
     @Override
@@ -41,11 +43,14 @@ public class Graph {
   private HashMap<String, Node> table = new HashMap<String, Node>();
 
   public void addNode(String label) {
-    table.put(label, new Node(label));
+    table.putIfAbsent(label, new Node(label));
   }
 
   public void removeNode(String label) {
     Node removed = table.remove(label);
+    if (removed == null)
+      throw new IllegalStateException();
+
     for (Node itr : table.values()) {
       itr.removeRelation(removed);
     }
@@ -64,7 +69,7 @@ public class Graph {
     Node fromNode = table.get(from);
     Node toNode = table.get(to);
     if (fromNode == null || toNode == null)
-      throw new IllegalStateException();
+      return;
 
     fromNode.removeRelation(toNode);
   }
