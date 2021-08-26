@@ -3,6 +3,7 @@ package Graph;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Graph {
 
@@ -53,6 +54,25 @@ public class Graph {
 
     for (Node itr : table.values()) {
       itr.removeRelation(removed);
+    }
+  }
+
+  public void depthFirstTraversalRecursive(String str) {
+    HashSet<String> set = new HashSet<String>();
+    depthFirstTraversalRecursive(table.get(str), set);
+  }
+
+  private void depthFirstTraversalRecursive(Node root, HashSet<String> set) {
+    if (root == null)
+      return;
+
+    if (!set.contains(root.label)) {
+      set.add(root.label);
+      System.out.println(root.label);
+    }
+
+    for (Node itr : root.ls) {
+      depthFirstTraversalRecursive(itr, set);
     }
   }
 

@@ -7,10 +7,13 @@ public class Main {
     gh.addNode("A");
     gh.addNode("B");
     gh.addNode("C");
+    gh.addNode("D");
     gh.addEdge("A", "B");
     gh.addEdge("A", "C");
-    gh.removeNode("C");
+    gh.addEdge("B", "D");
+    gh.addEdge("D", "C");
     gh.print();
+    gh.depthFirstTraversalRecursive("C");
   }
 
 }
