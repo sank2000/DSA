@@ -1,9 +1,11 @@
 package Graph;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Graph {
@@ -97,7 +99,32 @@ public class Graph {
       for (Node itr : curNode.ls) {
         if (!visited.contains(itr.label)) {
           stack.push(itr);
-          break;
+        }
+      }
+    }
+
+  }
+
+  public void breathFirstTraversalIterative(String str) {
+    Node root = table.get(str);
+
+    if (root == null)
+      return;
+
+    HashSet<String> visited = new HashSet<String>();
+    Queue<Node> queue = new ArrayDeque<Node>();
+    queue.add(root);
+
+    while (!queue.isEmpty()) {
+      Node curNode = queue.remove();
+      if (!visited.contains(curNode.label)) {
+        visited.add(curNode.label);
+        System.out.println(curNode.label);
+      }
+
+      for (Node itr : curNode.ls) {
+        if (!visited.contains(itr.label)) {
+          queue.add(itr);
         }
       }
     }

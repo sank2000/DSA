@@ -13,8 +13,8 @@ public class Main {
     gh.addEdge("B", "D");
     gh.addEdge("D", "C");
     gh.print();
-    gh.depthFirstTraversalRecursive("A");
-    gh.depthFirstTraversalIterative("A");
+    // gh.depthFirstTraversalRecursive("A");
+    gh.breathFirstTraversalIterative("A");
   }
 
 }
