@@ -60,6 +60,42 @@ public class Graph {
     }
   }
 
+  public boolean hasCycle() {
+    HashSet<Node> all = new HashSet<Node>();
+    HashSet<Node> visiting = new HashSet<Node>();
+    HashSet<Node> visited = new HashSet<Node>();
+
+    all.addAll(table.values());
+
+    while (!all.isEmpty()) {
+      Node current = (Node) all.toArray()[0];
+      if (hasCycle(current, all, visiting, visited))
+        return true;
+    }
+
+    return false;
+  }
+
+  private boolean hasCycle(Node root, HashSet<Node> all, HashSet<Node> visiting, HashSet<Node> visited) {
+    visiting.add(root);
+    all.remove(root);
+
+    for (Node itr : root.ls) {
+      if (visited.contains(itr))
+        continue;
+
+      if (visiting.contains(itr))
+        return true;
+
+      if (hasCycle(itr, all, visiting, visited))
+        return true;
+    }
+
+    visiting.remove(root);
+    visited.add(root);
+    return false;
+  }
+
   public ArrayList<String> topologicalSort(String str) {
 
     Stack<String> stack = new Stack<String>();
