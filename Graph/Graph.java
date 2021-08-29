@@ -60,6 +60,32 @@ public class Graph {
     }
   }
 
+  public ArrayList<String> topologicalSort(String str) {
+
+    Stack<String> stack = new Stack<String>();
+    ArrayList<String> ls = new ArrayList<String>();
+
+    topologicalSort(table.get(str), new HashSet<String>(), stack);
+
+    while (!stack.empty()) {
+      ls.add(stack.pop());
+    }
+
+    return ls;
+  }
+
+  private void topologicalSort(Node root, HashSet<String> set, Stack<String> stack) {
+    if (root == null || set.contains(root.label))
+      return;
+
+    for (Node itr : root.ls) {
+      topologicalSort(itr, set, stack);
+    }
+
+    stack.push(root.label);
+    set.add(root.label);
+  }
+
   public void depthFirstTraversalRecursive(String str) {
     HashSet<String> set = new HashSet<String>();
     depthFirstTraversalRecursive(table.get(str), set);
