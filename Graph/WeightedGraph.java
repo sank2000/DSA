@@ -10,9 +10,18 @@ public class WeightedGraph {
 
   private class Node {
     private String label;
+    ArrayList<Edge> relation = new ArrayList<Edge>();
 
     Node(String str) {
       label = str;
+    }
+
+    public void addRelation(Node to, int weight) {
+      relation.add(new Edge(this, to, weight));
+    }
+
+    public ArrayList<Edge> getEdges() {
+      return relation;
     }
 
     @Override
@@ -39,12 +48,9 @@ public class WeightedGraph {
   }
 
   private HashMap<String, Node> graph = new HashMap<String, Node>();
-  private HashMap<Node, ArrayList<Edge>> relation = new HashMap<Node, ArrayList<Edge>>();
 
   public void addNode(String label) {
-    var node = new Node(label);
-    graph.putIfAbsent(label, node);
-    relation.putIfAbsent(node, new ArrayList<Edge>());
+    graph.putIfAbsent(label, new Node(label));
   }
 
   public void addEdge(String from, String to, int weight) {
@@ -53,13 +59,13 @@ public class WeightedGraph {
     if (fromNode == null || toNode == null)
       throw new IllegalStateException();
 
-    relation.get(fromNode).add(new Edge(fromNode, toNode, weight));
-    relation.get(toNode).add(new Edge(toNode, fromNode, weight));
+    fromNode.addRelation(toNode, weight);
+    toNode.addRelation(fromNode, weight);
   }
 
   public void print() {
-    for (ArrayList<Edge> itr : relation.values()) {
-      System.out.println(itr.get(0).from + " ----> " + itr);
+    for (Node element : graph.values()) {
+      System.out.println(element.label + " ----> " + element.getEdges());
     }
   }
 
