@@ -3,18 +3,13 @@ package Graph;
 public class Main {
 
   public static void main(String[] args) {
-    Graph gh = new Graph();
+    WeightedGraph gh = new WeightedGraph();
     gh.addNode("A");
     gh.addNode("B");
     gh.addNode("C");
-    gh.addEdge("A", "B");
-    gh.addEdge("B", "C");
-    gh.addEdge("C", "A");
+    gh.addEdge("A", "B", 5);
+    gh.addEdge("A", "C", 3);
     gh.print();
-    System.out.println(gh.hasCycle());
-    // System.out.println(gh.topologicalSort("X"));
-    // gh.depthFirstTraversalRecursive("A");
-    // gh.breathFirstTraversalIterative("A");
   }
 
 }
