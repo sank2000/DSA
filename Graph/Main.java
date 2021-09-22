@@ -7,9 +7,11 @@ public class Main {
     gh.addNode("A");
     gh.addNode("B");
     gh.addNode("C");
-    gh.addEdge("A", "B", 5);
-    gh.addEdge("A", "C", 3);
+    gh.addEdge("A", "B", 1);
+    gh.addEdge("B", "C", 2);
+    gh.addEdge("A", "C", 10);
     gh.print();
+    System.out.println(gh.getShortestPath("A", "C"));
   }
 
 }
