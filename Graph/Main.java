@@ -9,9 +9,9 @@ public class Main {
     gh.addNode("C");
     gh.addEdge("A", "B", 1);
     gh.addEdge("B", "C", 2);
-    gh.addEdge("A", "C", 10);
+    gh.addEdge("C", "A", 10);
     gh.print();
-    System.out.println(gh.getShortestPath("A", "C"));
+    System.out.println(gh.hasCycle());
   }
 
 }
