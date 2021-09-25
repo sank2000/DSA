@@ -7,11 +7,13 @@ public class Main {
     gh.addNode("A");
     gh.addNode("B");
     gh.addNode("C");
-    gh.addEdge("A", "B", 1);
-    gh.addEdge("B", "C", 2);
-    gh.addEdge("C", "A", 10);
-    gh.print();
-    System.out.println(gh.hasCycle());
+    gh.addNode("D");
+    gh.addEdge("A", "B", 3);
+    gh.addEdge("B", "D", 4);
+    gh.addEdge("C", "D", 5);
+    gh.addEdge("A", "C", 2);
+    gh.addEdge("B", "C", 1);
+    gh.getMinimumSpanningTree().print();
   }
 
 }
